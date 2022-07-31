@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Employee_Directory.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employees</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<br />
+<table class="table" id="datatable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Phone number</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Item in Model)
+        {
+            <tr class="Search">
+                <td>@Item.Name</td>
+                <td>@Item.Department</td>
+                <td>@Item.PhoneNumber</td>
+                <td>@Item.Image</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@Item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@Item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@Item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<scripts src="~/wwwroot/js/jquery-1.10.2.min.js"></scripts>
+@section scripts
+{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/af-2.4.0/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/af-2.4.0/datatables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#datatable").DataTable();
+        })
+    </script>
+}
+
+
