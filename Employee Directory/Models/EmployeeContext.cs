@@ -7,7 +7,7 @@ namespace Employee_Directory.Models
         public DbSet<Employee> Employees { get; set;}
         public EmployeeContext(DbContextOptions<EmployeeContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
     }
 }
